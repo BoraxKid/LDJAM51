@@ -22,10 +22,10 @@ public class BaseEnemy : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        Vector3 pos = Vector3.MoveTowards(transform.position, GameConstants.player.transform.position, _Speed * Time.fixedDeltaTime);
+        Vector3 pos = Vector3.MoveTowards(transform.position, GameConstants.playerTransform.transform.position, _Speed * Time.fixedDeltaTime);
         pos.y = transform.position.y;
         transform.position = pos;
-        if (transform.position.x < GameConstants.player.transform.position.x)
+        if (transform.position.x < GameConstants.playerTransform.transform.position.x)
         {
             transform.localScale = new Vector3(_scale, _scale, _scale);
         }

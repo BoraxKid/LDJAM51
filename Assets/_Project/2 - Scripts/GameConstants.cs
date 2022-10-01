@@ -5,4 +5,5 @@ using UnityEngine;
 public static class GameConstants
 {
     public static GameObject player = null;
+    public static Transform playerTransform = null;
 }
