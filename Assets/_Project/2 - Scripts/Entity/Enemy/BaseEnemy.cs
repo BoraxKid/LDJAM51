@@ -10,21 +10,23 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] private int _BaseContactDamage = 1;
 
     private Health _health;
+    private Rigidbody _rigidbody;
     private float _scale;
 
     private void Awake()
     {
         _health = GetComponent<Health>();
         _health.SetMaxHealth(_MaxHealth);
+        _rigidbody = GetComponent<Rigidbody>();
         _scale = transform.localScale.x;
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
         Vector3 pos = Vector3.MoveTowards(transform.position, GameConstants.playerTransform.transform.position, _Speed * Time.fixedDeltaTime);
         pos.y = transform.position.y;
-        transform.position = pos;
+        //transform.position = pos;
+        _rigidbody.MovePosition(pos);
         if (transform.position.x < GameConstants.playerTransform.transform.position.x)
         {
             transform.localScale = new Vector3(_scale, _scale, _scale);

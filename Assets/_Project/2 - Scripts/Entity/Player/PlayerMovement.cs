@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Transform _target;
     [SerializeField] private float _moveSpeed = 1.0f;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    private CharacterController _characterController;
+    private Rigidbody _characterRigidbody;
     private Vector3 _movement;
     private Vector2 _movementInput;
 
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
             GameConstants.playerTransform = _target;
         }
 
-        _characterController = GetComponent<CharacterController>();
+        _characterRigidbody = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -54,11 +54,12 @@ public class PlayerMovement : MonoBehaviour
         if (_movement.magnitude > 1) // Make sure we don't go faster when going diagonally
             _movement.Normalize();
         _movement *= _moveSpeed;
+        _movement.y = 0.0f;
     }
 
     private void CharacterControllerMovement()
     {
-        _characterController.Move(_movement * Time.deltaTime);
+        _characterRigidbody.MovePosition(_characterRigidbody.transform.position + _movement * Time.deltaTime);
     }
 
 
