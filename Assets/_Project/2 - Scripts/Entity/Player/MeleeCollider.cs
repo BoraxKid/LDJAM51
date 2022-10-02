@@ -13,7 +13,7 @@ public class MeleeCollider : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<BaseEnemy>())
+        if (other.GetComponent<BaseEnemy>() && !Colliders.Find((x) => x.gameObject == other.gameObject))
         {
             Colliders.Add(other);
         }

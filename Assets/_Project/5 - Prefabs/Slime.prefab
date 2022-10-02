@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b54beb44ada7bf47b3bd2120c50f2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MaxHealth: 1
+  _MaxHealth: 2
   _Speed: 1
   _BaseContactDamage: 1
   _triggerCollider: {fileID: 2557874117846126194}

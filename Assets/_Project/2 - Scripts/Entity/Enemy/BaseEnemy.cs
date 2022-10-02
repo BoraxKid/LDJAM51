@@ -43,6 +43,7 @@ public class BaseEnemy : MonoBehaviour
     public void Hit(int damage, Vector2 hitDirection)
     {
         _health.Decrease(damage);
+        _rigidbody.AddForce(hitDirection * 7.5f, ForceMode.Impulse);
     }
 
     public void Die()
