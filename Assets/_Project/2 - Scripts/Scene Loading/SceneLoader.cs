@@ -10,14 +10,14 @@ public class SceneLoader : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(Instance);
+        }
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
     }
 

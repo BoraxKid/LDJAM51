@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class MeleeCollider : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public List<Collider> Colliders = new List<Collider>();
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    Colliders.Add(other);
+    //}
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<BaseEnemy>())
+        {
+            Colliders.Add(other);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    Colliders.Remove(other);
+    //}
 
+    private void FixedUpdate()
+    {
+        Colliders.Clear();
     }
 }

@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
     private void ContactHit(GameObject gameObject)
     {
         BaseEnemy enemy = gameObject.GetComponent<BaseEnemy>();
-        if (enemy != null)
+        if (enemy != null && enemy.Alive)
         {
             _health.Decrease(enemy.GetContactDamage());
         }
